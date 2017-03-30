@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4099663538630600}
   - component: {fileID: 114725760190039990}
+  - component: {fileID: 135659426568887544}
   m_Layer: 0
   m_Name: Enemigo
   m_TagString: Untagged
@@ -340,3 +341,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef0a26583cf1a8d48a9a83e29877f5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!135 &135659426568887544
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1625218613577722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.8
+  m_Center: {x: 0, y: 0, z: 0}

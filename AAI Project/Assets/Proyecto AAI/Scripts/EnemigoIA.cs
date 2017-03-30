@@ -48,5 +48,17 @@ namespace MoonAntonio
 		}
 		#endregion
 
+		#region Metodos
+		/// <summary>
+		/// <para>Cuando colisiona con un collider.</para>
+		/// </summary>
+		/// <param name="other">El collider con el que choca.</param>
+		private void OnTriggerEnter(Collider other)// Cuando colisiona con un collider
+		{
+			// Asignamos como objetivo el objeto colisionado
+			target = other.transform;
+		}
+		#endregion
+
 	}
 }
