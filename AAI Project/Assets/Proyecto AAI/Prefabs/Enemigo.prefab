@@ -343,3 +343,4 @@ MonoBehaviour:
   target: {fileID: 0}
   timeActualizar: 2
   velRotacion: 50
+  rango: 10

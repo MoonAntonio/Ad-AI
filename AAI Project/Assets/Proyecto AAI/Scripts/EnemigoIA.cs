@@ -30,7 +30,11 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Velocidad de Rotacion del enemigo.</para>
 		/// </summary>
-		public float velRotacion = 0;								// Velocidad de Rotacion del enemigo
+		public float velRotacion = 0.0f;                            // Velocidad de Rotacion del enemigo
+		/// <summary>
+		/// <para>Rango del enemigo.</para>
+		/// </summary>
+		public int rango = 0;										// Rango del enemigo
 		#endregion
 
 		#region Variables Privadas
@@ -58,7 +62,7 @@ namespace MoonAntonio
 		/// </summary>
 		private void Update()// Actualizador de EnemigoIA
 		{
-			// Optimizador de GPU
+			// Optimizador de CPU
 			tempTime++;
 
 			if (tempTime > timeActualizar)
@@ -78,7 +82,7 @@ namespace MoonAntonio
 		private void GetDistancia()// Obtiene la distancia hasta el objetivo
 		{
 			float distancia = Vector3.Distance(target.position, this.transform.position);
-			isRango = (distancia < 10);
+			isRango = (distancia < rango);
 		}
 
 		/// <summary>
