@@ -23,6 +23,14 @@ namespace MoonAntonio
 		/// <para>Objetivo del enemigo.</para>
 		/// </summary>
 		public Transform target = null;                             // Objetivo del enemigo
+		/// <summary>
+		/// <para>Tiempo que tarda en actualizar su estado.</para>
+		/// </summary>
+		public int timeActualizar = 0;                              // Tiempo que tarda en actualizar su estado
+		/// <summary>
+		/// <para>Velocidad de Rotacion del enemigo.</para>
+		/// </summary>
+		public float velRotacion = 0;								// Velocidad de Rotacion del enemigo
 		#endregion
 
 		#region Variables Privadas
@@ -37,7 +45,11 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Angulo de vision del enemigo.</para>
 		/// </summary>
-		private float angulo = 0.0f;								// Angulo de vision del enemigo
+		private float angulo = 0.0f;                                // Angulo de vision del enemigo
+		/// <summary>
+		/// <para>Variable que recoge los frames de cada Update.</para>
+		/// </summary>
+		private int tempTime = 0;									// Variable que recoge los frames de cada Update
 		#endregion
 
 		#region Actualizador
@@ -46,26 +58,15 @@ namespace MoonAntonio
 		/// </summary>
 		private void Update()// Actualizador de EnemigoIA
 		{
-			// Si hay objetivo
-			if (target)
+			// Optimizador de GPU
+			tempTime++;
+
+			if (tempTime > timeActualizar)
 			{
-				// Distancia
-				GetDistancia();
+				tempTime = 0;
 
-				// Esta el objetivo a rango
-				if (isRango)
-				{
-					// Direccion
-					GetDireccion();
-
-					// Angulo
-					GetAngulo();
-					if (angulo < 45)
-					{
-						// Rotacion
-						GetRotacion();
-					}
-				}
+				// Logica del enemigo
+				Logica();
 			}
 		}
 		#endregion
@@ -77,7 +78,7 @@ namespace MoonAntonio
 		private void GetDistancia()// Obtiene la distancia hasta el objetivo
 		{
 			float distancia = Vector3.Distance(target.position, this.transform.position);
-			isRango = (distancia < 4);
+			isRango = (distancia < 10);
 		}
 
 		/// <summary>
@@ -106,9 +107,38 @@ namespace MoonAntonio
 		private void GetRotacion()// Obtiene la rotacion del enemigo
 		{
 			Quaternion rot = Quaternion.LookRotation(direccion);
-			this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rot, Time.deltaTime * 5f);
+			this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rot, Time.deltaTime * velRotacion);
 		}
 		#endregion
 
+		#region Metodos
+		/// <summary>
+		/// <para>Logica del enemigo ( Movimiento, rotacion, distancia, angulo ).</para>
+		/// </summary>
+		private void Logica()// Logica del enemigo ( Movimiento, rotacion, distancia, angulo )
+		{
+			// Si hay objetivo
+			if (target)
+			{
+				// Distancia
+				GetDistancia();
+
+				// Esta el objetivo a rango
+				if (isRango)
+				{
+					// Direccion
+					GetDireccion();
+
+					// Angulo
+					GetAngulo();
+					if (angulo < 45)
+					{
+						// Rotacion
+						GetRotacion();
+					}
+				}
+			}
+		}
+		#endregion
 	}
 }
