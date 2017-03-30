@@ -135,16 +135,6 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 790725761}
-    - target: {fileID: 114725760190039990, guid: eb549859ab3078e40a8ea2f1ee9625cf,
-        type: 2}
-      propertyPath: timeActualizar
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114725760190039990, guid: eb549859ab3078e40a8ea2f1ee9625cf,
-        type: 2}
-      propertyPath: velRotacion
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eb549859ab3078e40a8ea2f1ee9625cf, type: 2}
   m_IsPrefabParent: 0

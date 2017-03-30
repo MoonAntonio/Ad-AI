@@ -344,3 +344,4 @@ MonoBehaviour:
   timeActualizar: 2
   velRotacion: 50
   rango: 10
+  radioVision: 45

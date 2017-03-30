@@ -22,19 +22,23 @@ namespace MoonAntonio
 		/// <summary>
 		/// <para>Objetivo del enemigo.</para>
 		/// </summary>
-		public Transform target = null;                             // Objetivo del enemigo
+		public Transform target = null;                             // Objetivo del enemigo (D: Target)
 		/// <summary>
 		/// <para>Tiempo que tarda en actualizar su estado.</para>
 		/// </summary>
-		public int timeActualizar = 0;                              // Tiempo que tarda en actualizar su estado
+		public int timeActualizar = 0;                              // Tiempo que tarda en actualizar su estado (D: 2)
 		/// <summary>
 		/// <para>Velocidad de Rotacion del enemigo.</para>
 		/// </summary>
-		public float velRotacion = 0.0f;                            // Velocidad de Rotacion del enemigo
+		public float velRotacion = 0.0f;                            // Velocidad de Rotacion del enemigo (D: 50)
 		/// <summary>
 		/// <para>Rango del enemigo.</para>
 		/// </summary>
-		public int rango = 0;										// Rango del enemigo
+		public int rango = 0;                                       // Rango del enemigo (D: 10)
+		/// <summary>
+		/// <para>Radio de vision del enemigo.</para>
+		/// </summary>
+		public int radioVision = 0;									// Radio de vision del enemigo (D: 45)
 		#endregion
 
 		#region Variables Privadas
@@ -135,7 +139,7 @@ namespace MoonAntonio
 
 					// Angulo
 					GetAngulo();
-					if (angulo < 45)
+					if (angulo < radioVision)
 					{
 						// Rotacion
 						GetRotacion();
