@@ -7,6 +7,16 @@
 # Ad-AI
 Investigacion sobre la Inteligencia Artificial Avanzada en desarrollo de videojuegos.
 
+## Desarrollo
+
+- [x] Base
+- [ ] Agente
+- [ ] Minimax
+- [ ] A*
+- [ ] Neuro
+
+---
+
 <p align="center">
   <img src="https://github.com/MoonAntonio/Ad-AI/blob/master/Res/Prev.gif?raw=true">
 </p>
