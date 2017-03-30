@@ -1,10 +1,10 @@
 ﻿//                                  ┌∩┐(◣_◢)┌∩┐
 //																				\\
-// EnemigoIA.cs (00/00/0000)													\\
+// EnemigoIA.cs (30/03/2017)													\\
 // Autor: Antonio Mateo (Moon Antonio) 									        \\
-// Descripcion:																	\\
-// Fecha Mod:		00/00/0000													\\
-// Ultima Mod:																	\\
+// Descripcion:		Control de la IA del enemigo								\\
+// Fecha Mod:		30/03/2017													\\
+// Ultima Mod:		Version Inicial												\\
 //******************************************************************************\\
 
 #region Librerias
@@ -13,8 +13,40 @@ using UnityEngine;
 
 namespace MoonAntonio
 {
+	/// <summary>
+	/// <para>Control de la IA del enemigo</para>
+	/// </summary>
 	public class EnemigoIA : MonoBehaviour 
 	{
+		#region Variables Publicas
+		/// <summary>
+		/// <para>Objetivo del enemigo.</para>
+		/// </summary>
+		public Transform target;									// Objetivo del enemigo
+		#endregion
+
+		#region Actualizador
+		/// <summary>
+		/// <para>Actualizador de EnemigoIA.</para>
+		/// </summary>
+		private void Update()// Actualizador de EnemigoIA
+		{
+			// Si hay objetivo
+			if (target)
+			{
+				// Direccion
+				Vector3 dir = target.position - this.transform.position;
+				if (dir == Vector3.zero)
+				{
+					dir = transform.forward;
+				}
+
+				// Rotacion
+				Quaternion rot = Quaternion.LookRotation(dir);
+				this.transform.rotation = Quaternion.Slerp(this.transform.rotation, rot, Time.deltaTime * 5f);
+			}
+		}
+		#endregion
 
 	}
 }
